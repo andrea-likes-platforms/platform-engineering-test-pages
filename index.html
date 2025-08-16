@@ -7,6 +7,35 @@
     <meta name="description" content="Starter site for collecting platform engineering tools & patterns." />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
+    <style>
+      .hotspot {
+        fill: rgba(0, 0, 255, 0.3); /* Semi-transparent blue */
+        cursor: pointer;
+        transition: fill 0.3s ease;
+      }
+      .hotspot:hover {
+        fill: rgba(0, 0, 255, 0.5); /* Darker blue on hover */
+      }
+      .responsive {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .svg-container {
+        position: relative;
+      }
+      .svg-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Ensure SVG doesn’t block image events */
+      }
+      .svg-overlay a {
+        pointer-events: all; /* Restore pointer events for clickable links */
+      }
+    </style>
   </head>
   <body>
     <a class="visually-hidden" href="#main">Skip to content</a>
@@ -28,7 +57,7 @@
 
     <main id="main" class="container">
       <section>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
       </section>
 
       <section class="note" aria-live="polite">
@@ -37,28 +66,28 @@
       </section>
 
       <section>
-        <img
-          src="toolkit_v02.jpg"
-          alt="Toolkit diagram with ghost house and adoption symbol."
-          class="responsive"
-          loading="lazy"
-          decoding="async"
-          usemap="#hotspots"
-        />
-        <map name="hotspots">
-          <area shape="rect"
-                coords="260,300,400,500"
-                href="adoption.html"
-                alt="Adoption"
-                aria-label="Adoption"
-                title="Adoption" />
-          <area shape="rect"
-                coords="460,250,600,500" 
-                href="legacy.html"
-                alt="Legacy Platform engineering patterns"
-                aria-label="Legacy Platform engineering patterns"
-                title="Legacy Platform engineering patterns" />
-        </map>
+        <div class="svg-container">
+          <!-- Background Image -->
+          <img
+            src="toolkit_v02.jpg"
+            alt="Toolkit diagram with ghost house and adoption symbol."
+            class="responsive"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <!-- SVG Overlay -->
+          <svg class="svg-overlay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+            <!-- Clickable Area 1: Adoption -->
+            <a href="adoption.html" aria-label="Adoption">
+              <rect class="hotspot" x="160" y="350" width="140" height="200" />
+            </a>
+            <!-- Clickable Area 2: Legacy Platform -->
+            <a href="legacy.html" aria-label="Legacy Platform engineering patterns">
+              <rect class="hotspot" x="380" y="350" width="140" height="200" />
+            </a>
+          </svg>
+        </div>
       </section>
 
       <section>
